@@ -1,5 +1,5 @@
 import { Spinner } from "react-bootstrap";
-import { Route, Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
 
 function PrivateRoute(props) {

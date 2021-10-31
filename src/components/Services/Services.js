@@ -1,19 +1,18 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import Course from "../course/Course.js";
-import bgImage from "./../../assets/images/sectionBg.png";
 import Bounce from "react-reveal/Bounce";
-import useCourses from "../../hooks/useCourses.js";
+import useservices from "../../hooks/useservices.js";
+import bgImage from "./../../assets/images/sectionBg.png";
 
-const Courses = () => {
-  const [courses] = useCourses();
+const services = () => {
+  const [services] = useservices();
   return (
     <div
       style={{ background: `url(${bgImage})`, backgroundAttachment: "fixed" }}
     >
       <Container className="py-5">
         <Bounce left cascade>
-          <h2 className="text-center text-white mb-0">Our All Courses</h2>
+          <h2 className="text-center text-white mb-0">Our All services</h2>
         </Bounce>
         <Bounce right cascade>
           <p className="my-4 mt-2 text-center text-muted fs-5">
@@ -22,8 +21,8 @@ const Courses = () => {
           </p>
         </Bounce>
         <Row>
-          {courses?.map((course) => (
-            <Course course={course} key={course.key}></Course>
+          {services?.map((service) => (
+            <service service={service} id={service.id}></service>
           ))}
         </Row>
       </Container>
@@ -31,4 +30,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default services;

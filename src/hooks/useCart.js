@@ -4,39 +4,39 @@ import useFirebase from "./useFirebase.js";
 const useCart = () => {
   const { user } = useFirebase();
   const { uid } = user;
-  const [selectedCourse, setSelectedCourse] = useState([]);
+  const [selectedservice, setSelectedservice] = useState([]);
 
   useEffect(() => {
     fetch(`https://aqueous-dawn-65962.herokuapp.com/cart/${uid}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length) {
-          setSelectedCourse(data);
+          setSelectedservice(data);
         }
       });
   }, [uid]);
 
-  function addToCart(course) {
-    const isHave = selectedCourse.find(
-      (selected) => selected._id === course._id
+  function addToCart(service) {
+    const isHave = selectedservice.find(
+      (selected) => selected._id === service._id
     );
-    delete course._id;
-    course.uid = uid;
-    course.status = "pending";
+    delete service._id;
+    service.uid = uid;
+    service.status = "pending";
 
     if (isHave) {
-      alert("course has been selected!");
+      alert("service has been selected!");
     } else {
-      fetch("https://aqueous-dawn-65962.herokuapp.com/course/add", {
+      fetch("https://aqueous-dawn-65962.herokuapp.com/service/add", {
         method: "post",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(course),
+        body: JSON.stringify(service),
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            const newSelection = [...selectedCourse, course];
-            setSelectedCourse(newSelection);
+            const newSelection = [...selectedservice, service];
+            setSelectedservice(newSelection);
           }
         });
     }
@@ -49,17 +49,17 @@ const useCart = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount === 1) {
-          const selectAfterRemove = selectedCourse.filter(
-            (course) => course._id !== id
+          const selectAfterRemove = selectedservice.filter(
+            (service) => service._id !== id
           );
-          setSelectedCourse(selectAfterRemove);
+          setSelectedservice(selectAfterRemove);
         } else {
           alert("something went wrong!!");
         }
       });
   }
 
-  return { setSelectedCourse, remove, addToCart, selectedCourse };
+  return { setSelectedservice, remove, addToCart, selectedservice };
 };
 
 export default useCart;

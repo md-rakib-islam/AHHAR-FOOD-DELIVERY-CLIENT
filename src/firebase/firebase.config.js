@@ -1,10 +1,9 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyA2R8wrirCNaABr3j9rA1AVt56yJIR9lcg",
-  authDomain: "coding-club-institute.firebaseapp.com",
-  projectId: "coding-club-institute",
-  storageBucket: "coding-club-institute.appspot.com",
-  messagingSenderId: "906500414358",
-  appId: "1:906500414358:web:5eeaac653e56c1ebb09bb7",
+  apiKey: "AIzaSyAMwZFdUsOjHqTvGJK3nxI-etGdJSaoXJw",
+  authDomain: "fooddelivery-dd855.firebaseapp.com",
+  projectId: "fooddelivery-dd855",
+  storageBucket: "fooddelivery-dd855.appspot.com",
+  messagingSenderId: "247755516753",
+  appId: "1:247755516753:web:4f795a974607e14f40c170",
 };
-
 export default firebaseConfig;

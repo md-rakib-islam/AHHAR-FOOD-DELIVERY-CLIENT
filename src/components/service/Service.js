@@ -1,17 +1,16 @@
+import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
 import Rating from "react-rating";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import Zoom from "react-reveal/Zoom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 
-const Course = ({ course }) => {
+const service = ({ service }) => {
   const history = useHistory();
-  const { _id, img, title, desc, price, rating, ratingCount } = course;
+  const { _id, img, title, desc, price, rating, ratingCount } = service;
 
   const { addToCart, AllContexts } = useAuth();
   const { user } = AllContexts;
@@ -55,8 +54,8 @@ const Course = ({ course }) => {
             </Card.Body>
             <Card.Body className="d-flex">
               <NavLink
-                to={`/courses/${_id}`}
-                className="btn btn-primary w-100 me-1"
+                to={`/services/${_id}`}
+                className="btn btn-danger w-100 me-1"
               >
                 View Details
               </NavLink>
@@ -64,12 +63,12 @@ const Course = ({ course }) => {
               <button
                 onClick={() => {
                   if (uid) {
-                    addToCart(course);
+                    addToCart(service);
                   } else {
                     history.push("/login");
                   }
                 }}
-                className="btn btn-primary  w-100"
+                className="btn btn-danger  w-100"
               >
                 Add to Cart
               </button>
@@ -81,4 +80,4 @@ const Course = ({ course }) => {
   );
 };
 
-export default Course;
+export default service;

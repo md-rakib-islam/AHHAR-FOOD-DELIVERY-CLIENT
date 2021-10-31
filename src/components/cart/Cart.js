@@ -1,16 +1,16 @@
+import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Rating from "react-rating";
-import useAuth from "../../hooks/useAuth.js";
-import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth.js";
 
 const Cart = () => {
-  const { selectedCourse, setSelectedCourse, removeItem } = useAuth();
-  const totalCost = selectedCourse.reduce(
-    (previous, course) => previous + course.price,
+  const { selectedservice, setSelectedservice, removeItem } = useAuth();
+  const totalCost = selectedservice.reduce(
+    (previous, service) => previous + service.price,
     0
   );
 
@@ -20,46 +20,46 @@ const Cart = () => {
         <Container>
           <Row>
             <Col md={8}>
-              {selectedCourse.map((course) => (
+              {selectedservice.map((service) => (
                 <Row className="bg-info my-3">
                   <Col
                     className="p-0 d-flex align-items-center justify-content-center"
                     md={4}
                   >
-                    <img width="100%" src={course.img} alt="" />
+                    <img width="100%" src={service.img} alt="" />
                   </Col>
                   <Col className="py-2">
-                    <h6 md={8}>{course.title}</h6>
-                    <p className="m-0">{course.desc}</p>
+                    <h6 md={8}>{service.title}</h6>
+                    <p className="m-0">{service.desc}</p>
                     <Row>
                       <Col>
                         <Row>
-                          <h6 className="my-1">Price:${course.price}</h6>
+                          <h6 className="my-1">Price:${service.price}</h6>
                         </Row>
                         <Row>
                           <Col>
                             <Rating
                               readonly
                               style={{ color: "goldenrod" }}
-                              initialRating={course.rating}
+                              initialRating={service.rating}
                               emptySymbol={<FontAwesomeIcon icon={emptyStar} />}
                               fullSymbol={<FontAwesomeIcon icon={fullStar} />}
                             />{" "}
-                            {course.rating}
+                            {service.rating}
                             <p className="m-0">
-                              Total Review: {course.ratingCount}
+                              Total Review: {service.ratingCount}
                             </p>
                           </Col>
                           <Col className="d-flex align-items-center">
                             <NavLink
-                              to={`/courses/${course.key}`}
+                              to={`/services/${service.id}`}
                               className="w-50 btn py-2 btn-primary"
                             >
                               View Details
                             </NavLink>
                             <button
                               onClick={() => {
-                                removeItem(course.key);
+                                removeItem(service.id);
                               }}
                               className="btn py-2 ms-1 w-50 btn-primary"
                             >
@@ -79,11 +79,11 @@ const Cart = () => {
               md={4}
             >
               <div className="text-center my-2">
-                <h3>Total {selectedCourse.length} Course Selected</h3>
+                <h3>Total {selectedservice.length} service Selected</h3>
                 <h4>Cost: {totalCost}$</h4>
                 <button
                   onClick={() => {
-                    setSelectedCourse([]);
+                    setSelectedservice([]);
                     alert("Thanks for purchasing!!");
                   }}
                   className="btn btn-primary"
@@ -95,7 +95,7 @@ const Cart = () => {
           </Row>
         </Container>
       ) : (
-        <h1 className="text-center my-5 py-5">No Course Selected</h1>
+        <h1 className="text-center my-5 py-5">No service Selected</h1>
       )}
     </div>
   );

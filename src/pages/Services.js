@@ -1,11 +1,10 @@
 import { Container, Row } from "react-bootstrap";
-import useAuth from "./../hooks/useAuth.js";
 import Slide from "react-reveal/Slide";
+import useAuth from "../hooks/useAuth.js";
 import sectionBG from "./../assets/images/sectionBg.png";
-import Course from "../components/course/Course.js";
 
-const Courses = () => {
-  const { courses, totalPage, currentPage, setCurrentPage } = useAuth();
+const services = () => {
+  const { services, totalPage, currentPage, setCurrentPage } = useAuth();
 
   function pageHandler(number) {
     setCurrentPage(number);
@@ -15,13 +14,18 @@ const Courses = () => {
     <div className="py-5" style={{ background: `url(${sectionBG})` }}>
       <div className="text-center text-white">
         <Slide left>
-          <h1> Our All Courses</h1>
+          <h1>
+            {" "}
+            We are offering you within{" "}
+            <span className="text-danger">One Hour</span> delivery <br /> any
+            kind of foods{" "}
+          </h1>
         </Slide>
 
         <Slide right>
           <p className="mb-0">
-            Here you can find our all latest courses. Choose some of them and
-            try to grow up your skills.
+            Here you can find our all latest foods. Choose some of them and try
+            to eat your lunch or dinner.
           </p>
         </Slide>
       </div>
@@ -29,8 +33,8 @@ const Courses = () => {
       <Container>
         <div className="my-3 d-flex flex-wrap justify-content-between ">
           <Row>
-            {courses.map((course) => (
-              <Course key={course._id} course={course} />
+            {services.map((service) => (
+              <service key={service._id} service={service} />
             ))}
           </Row>
         </div>
@@ -41,8 +45,8 @@ const Courses = () => {
               key={number}
               className={
                 number === currentPage
-                  ? "btn btn-primary rounded-0 border"
-                  : "btn bg-dark text-white rounded-0 border"
+                  ? "btn btn-danger rounded-4 border"
+                  : "btn  text-white rounded-0 "
               }
             >
               {number + 1}
@@ -54,4 +58,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default services;

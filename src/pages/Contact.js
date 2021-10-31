@@ -1,8 +1,8 @@
 import React from "react";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import SectionBg from "./../assets/images/sectionBg.png";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import Bounce from "react-reveal/Bounce";
 import Slide from "react-reveal/Slide";
+import SectionBg from "./../assets/images/sectionBg.png";
 
 const Contact = () => {
   return (
@@ -76,7 +76,7 @@ function ContactForm() {
                   rows={3}
                 />
               </Form.Group>
-              <Button className="mb-5 px-4" variant="primary" type="submit">
+              <Button className="mb-5 px-4" variant="danger" type="submit">
                 Submit
               </Button>
             </Form>

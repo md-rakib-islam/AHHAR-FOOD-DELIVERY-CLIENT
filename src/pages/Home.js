@@ -1,15 +1,14 @@
 import React from "react";
-import bgImage from "./../assets/images/sectionBg.png";
-import Bg from "./../assets/images/bg.png";
 import { Container, Row } from "react-bootstrap";
 import Bounce from "react-reveal/Bounce";
 import Slide from "react-reveal/Slide";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
-import Course from "../components/course/Course.js";
+import Bg from "./../assets/images/bg.png";
+import bgImage from "./../assets/images/sectionBg.png";
 
 const Home = () => {
-  const { courses } = useAuth();
+  const { services } = useAuth();
   return (
     <div>
       <div
@@ -28,22 +27,30 @@ const Home = () => {
           >
             <div className="text-center my-5 py-5">
               <Bounce left cascade>
-                <h1 className="text-white">Learn to be creative</h1>
+                <Slide left>
+                  <h1 className="text-white ">
+                    "AAHAR" <br /> FOOD DELIVERY & SERVICE
+                  </h1>
+                </Slide>
               </Bounce>
 
               <Bounce right cascade>
-                <p className="my-4 text-white fs-5">
-                  Learn exciting technologies from web development, design, game
-                  development and more!
-                </p>
+                <Slide right>
+                  {" "}
+                  <p className="my-4 text-white fs-5">
+                    Food is any substance consumed to provide nutritional
+                    support for an organism. <br /> Food is usually of plant,
+                    animal or fungal origin
+                  </p>
+                </Slide>
               </Bounce>
 
               <Bounce>
                 <NavLink
-                  to="/courses"
-                  className="rounded-pill btn btn-primary fs-5 py-2 px-4"
+                  to="/services"
+                  className="rounded-pill btn btn-danger fs-5 py-2 px-4"
                 >
-                  View Courses
+                  View Our Foods
                 </NavLink>
               </Bounce>
             </div>
@@ -56,15 +63,20 @@ const Home = () => {
         className="py-5"
         style={{ background: `url(${bgImage})` }}
       >
+        <div>
+          <services></services>
+        </div>
         <div className="text-center text-white">
           <Slide left>
-            <h1>Our Feature Courses</h1>
+            <h1>
+              More Foods Items Deliver with{" "}
+              <span className="text-danger">One Hour</span>
+            </h1>
           </Slide>
 
           <Slide right>
             <p className="mb-0">
-              Here you can find our all latest courses. Choose some of them and
-              try to grow up your skills.
+              Here you can find our all latest Foods Items. Choose your items..
             </p>
           </Slide>
         </div>
@@ -72,8 +84,8 @@ const Home = () => {
         <Container>
           <div className="my-3 d-flex flex-wrap justify-content-between">
             <Row>
-              {courses.slice(0, 6)?.map((course) => (
-                <Course key={course.key} course={course} />
+              {services.slice(0, 9)?.map((service) => (
+                <service id={service.id} service={service} />
               ))}
             </Row>
           </div>

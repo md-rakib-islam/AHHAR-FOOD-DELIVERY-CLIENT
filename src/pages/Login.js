@@ -1,19 +1,17 @@
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Col, Form, FormControl, InputGroup, Row } from "react-bootstrap";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
 import google from "./../assets/images/google.png";
-import facebook from "./../assets/images/facebook.png";
-import github from "./../assets/images/github.png";
 
 const Login = () => {
   const { AllContexts } = useAuth();
   const history = useHistory();
 
   const location = useLocation();
-  const redirect = location?.state?.from || "/home";
+  const redirect = location.state?.from || "/home";
 
   const {
     getEmail,
@@ -23,8 +21,6 @@ const Login = () => {
     setUser,
     setError,
     signInWithGoogle,
-    signInWithGithub,
-    signInWithFacebook,
   } = AllContexts;
 
   return (
@@ -115,36 +111,6 @@ const Login = () => {
           className="btn"
         >
           <img src={google} width="46px" alt="google-icon" />
-        </button>
-        <button
-          onClick={() => {
-            signInWithFacebook()
-              .then((result) => {
-                setUser(result.user);
-                history.push(redirect);
-              })
-              .catch((err) => {
-                setError(err.message);
-              });
-          }}
-          className="btn"
-        >
-          <img width="50px" src={facebook} alt="facebook-icon" />
-        </button>
-        <button
-          onClick={() => {
-            signInWithGithub()
-              .then((result) => {
-                setUser(result.user);
-                history.push(redirect);
-              })
-              .catch((err) => {
-                setError(err.message);
-              });
-          }}
-          className="btn"
-        >
-          <img width="55px" src={github} alt="github-icon" />
         </button>
       </div>
     </div>

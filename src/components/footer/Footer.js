@@ -1,48 +1,46 @@
-import React from "react";
-import "./footer.css";
-import payment from "./../../assets/images/payment.png";
-import footerLogo from "./../../assets/images/footer-logo.png";
-import { Col, Container, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEnvelope,
-  faPhone,
+  faMailBulk,
   faMapMarkerAlt,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import footerLogo from "./../../assets/images/footer-logo.png";
+import payment from "./../../assets/images/payment.png";
+import "./footer.css";
 
 const Footer = () => {
   return (
-    <div className="text-white">
+    <div className="text-black fw-bold">
       <div className="py-4 gradient">
         <Container>
           <Row>
             <Col md={6}>
-              <div className="text-center my-2">
-                <img width="120px" src={footerLogo} alt="" />
+              <div className=" my-2">
+                <img width="180px" src={footerLogo} alt="" />
               </div>
 
               <ul className="list-unstyled">
                 <li>
                   <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  <span className="ms-1 fs-5">Naogaon,Rajshahi,Bangladesh</span>
+                  <span className="ms-1 fs-5"> Demra,Dhaka,Bangladesh</span>
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faEnvelope} />
-                  <span className="ms-1 fs-5">
-                    Official: coding.club.pro@gmail.com
-                  </span>
+                  <FontAwesomeIcon icon={faMailBulk} />
+                  <span className="ms-1 fs-5">Official: aharbd@ahar.com</span>
                 </li>
                 <li>
                   <FontAwesomeIcon icon={faPhone} />
                   <span className="ms-1 fs-5">
-                    Helpline: 01763251119(Available:10:00AM to 10.00PM)
+                    HotLine: 01704404410(Available:10:00AM to 10.00PM)
                   </span>
                 </li>
               </ul>
             </Col>
             <Col md={2}>
-              <ul className="list-unstyled footer-link">
+              <ul className="list-unstyled footer-link text-black">
                 <li>
                   <NavLink to="/home">Home</NavLink>
                 </li>
@@ -53,7 +51,7 @@ const Footer = () => {
                   <NavLink to="/contact">Contact us</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/courses">Courses</NavLink>
+                  <NavLink to="/services">Services</NavLink>
                 </li>
                 <li>
                   <NavLink to="/policy">Policy</NavLink>
@@ -74,8 +72,7 @@ const Footer = () => {
       </div>
       <hr className="m-0 p-0" />
       <p className="text-center m-0 py-3 copyright">
-        Copyright © All Reserved by Coding Club pro - programming Community in
-        2021
+        Copyright © All Reserved by AhaarBD
       </p>
     </div>
   );

@@ -1,18 +1,18 @@
+import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Rating from "react-rating";
 import { useParams } from "react-router-dom";
-import useCourses from "../../hooks/useCourses.js";
-import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import useAuth from "../../hooks/useAuth.js";
+import useservices from "../../hooks/useservices.js";
 
-const CourseDetails = () => {
-  const [courses] = useCourses();
+const serviceDetails = () => {
+  const [services] = useservices();
   const { addToCart } = useAuth();
   const { id } = useParams();
-  const newSelected = courses?.find((course) => course.key === Number(id));
+  const newSelected = services?.find((service) => service.id === Number(id));
 
   return (
     <div className="my-5">
@@ -42,7 +42,7 @@ const CourseDetails = () => {
 
                 <div className="d-flex">
                   <button
-                    onClick={() => addToCart(newSelected?.key)}
+                    onClick={() => addToCart(newSelected?.id)}
                     className="w-50 ms-1 mt-3 btn btn-primary"
                   >
                     Add to Cart
@@ -68,4 +68,4 @@ const CourseDetails = () => {
     </div>
   );
 };
-export default CourseDetails;
+export default serviceDetails;

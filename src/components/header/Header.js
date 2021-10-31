@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import logo from "./../../assets/images/logo.png";
-import HeaderBG from "./../../assets/images/header-bg.png";
 import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import useAuth from "../../hooks/useAuth.js";
+import HeaderBG from "./../../assets/images/header-bg.jpg";
+import logo from "./../../assets/images/logo.png";
 import "./header.css";
 
 const Header = () => {
@@ -12,51 +12,50 @@ const Header = () => {
   const { user, logOut } = AllContexts;
   const { displayName, photoURL, email } = user;
   return (
-    <div className="">
-      <Navbar style={{ background: `url(${HeaderBG})` }} expand="lg">
+    <div className="mb-4">
+      <Navbar
+        fixed="top"
+        style={{ background: `url(${HeaderBG})` }}
+        expand="lg"
+      >
         <Container>
-          <Navbar.Brand as={NavLink} className="text-white" to="/home">
-            <img width="70px" src={logo} alt="Logo" />{" "}
-            <span className="title"> Coding Club Institute</span>
+          <Navbar.Brand as={NavLink} className="text-black" to="/home">
+            <img width="150px" src={logo} alt="Logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto align-items-center">
-              <Nav.Link as={NavLink} to="/home" className="text-white">
+            <Nav className="ms-auto align-items-center text-black fw-bold">
+              <Nav.Link as={NavLink} to="/home">
                 Home
               </Nav.Link>
 
-              <Nav.Link as={NavLink} to="/about" className="text-white">
+              <Nav.Link as={NavLink} to="/services">
+                Services
+              </Nav.Link>
+              <Nav.Link as={HashLink} to="/home#feature">
+                More Services
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/about">
                 About
               </Nav.Link>
 
-              <Nav.Link as={NavLink} to="/contact" className="text-white">
+              <Nav.Link as={NavLink} to="/contact">
                 Contact
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/courses" className="text-white">
-                Courses
-              </Nav.Link>
-              <Nav.Link as={HashLink} to="/home#feature" className="text-white">
-                Feature Courses
               </Nav.Link>
 
               {!displayName ? (
                 <>
-                  <Nav.Link as={NavLink} to="/signup" className="text-white">
+                  <Nav.Link as={NavLink} to="/signup">
                     Sign Up
                   </Nav.Link>
 
-                  <Nav.Link className="text-white" as={NavLink} to="/login">
+                  <Nav.Link as={NavLink} to="/login">
                     Log in
                   </Nav.Link>
                 </>
               ) : (
                 <>
-                  <Nav.Link
-                    as={HashLink}
-                    to="/dashboard"
-                    className="text-white"
-                  >
+                  <Nav.Link as={HashLink} to="/dashboard">
                     Dashboard
                   </Nav.Link>
 
@@ -75,16 +74,13 @@ const Header = () => {
                     <div className="text-center">
                       <h6>{displayName}</h6>
                       <p className="m-0 mb-2">{email}</p>
-                      <button onClick={logOut} className="btn btn-primary">
+                      <button onClick={logOut} className="btn btn-danger">
                         Sign Out
                       </button>
                     </div>
                   </NavDropdown>
                 </>
               )}
-              <Nav.Link as={HashLink} to="/admin" className="text-white">
-                Admin Panel
-              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

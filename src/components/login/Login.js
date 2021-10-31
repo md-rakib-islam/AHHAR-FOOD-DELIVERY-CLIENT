@@ -1,11 +1,11 @@
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Col, Form, FormControl, InputGroup, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import facebook from "../../assets/images/facebook.png";
-import google from "../../assets/images/google.png";
 import github from "../../assets/images/github.png";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import google from "../../assets/images/google.png";
 import useAuth from "../../hooks/useAuth.js";
 
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
   } = contexts;
   const location = useLocation();
   const history = useHistory();
-  const redirect = location.state?.from || "/courses";
+  const redirect = location.state?.from || "/services";
   return (
     <div className="text-center my-4">
       <h2>Please Login</h2>

@@ -1,79 +1,90 @@
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import Home from "./pages/Home.js";
-import About from "./pages/About.js";
-import Contact from "./pages/Contact.js";
-import Courses from "./pages/Courses.js";
-import Login from "./pages/Login.js";
-import Signup from "./pages/Signup.js";
-import PageNotFound from "./pages/PageNotFound.js";
-import AuthProvider from "./contexts/AuthProvider.js";
-import Reset from "./pages/Reset.js";
-import Details from "./pages/Details.js";
-import PrivateRoute from "./route/PrivateRoute.js";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 import Footer from "./components/footer/Footer.js";
 import Header from "./components/header/Header.js";
+import AuthProvider from "./contexts/AuthProvider.js";
+import About from "./pages/About.js";
+import Contact from "./pages/Contact.js";
 import Dashboard from "./pages/Dashboard.js";
-import AdminPanel from "./pages/AdminPanel.js";
+import Details from "./pages/Details.js";
+import Home from "./pages/Home.js";
+import Login from "./pages/Login.js";
+import PageNotFound from "./pages/PageNotFound.js";
+import Reset from "./pages/Reset.js";
+import Signup from "./pages/Signup.js";
+import PrivateRoute from "./route/PrivateRoute.js";
 
 function App() {
   return (
     <div>
       <AuthProvider>
         <Router>
-          <Header> </Header>
-
           <Switch>
             <Route exact path="/">
+              <Header> </Header>
               <Home></Home>
+              <Footer></Footer>
             </Route>
 
             <Route path="/home">
+              <Header> </Header>
               <Home></Home>
+              <Footer></Footer>
             </Route>
 
             <Route path="/about">
+              <Header> </Header>
               <About></About>
-            </Route>
-            <Route path="/admin">
-              <AdminPanel />
+              <Footer></Footer>
             </Route>
 
             <Route path="/contact">
+              <Header> </Header>
               <Contact></Contact>
+              <Footer></Footer>
             </Route>
 
-            <Route exact path="/courses">
-              <Courses></Courses>
+            <Route exact path="/services">
+              <Header> </Header>
+              <services></services>
+              <Footer></Footer>
             </Route>
 
             <PrivateRoute path="/dashboard">
+              <Header> </Header>
               <Dashboard></Dashboard>
+              <Footer></Footer>
             </PrivateRoute>
 
             <Route path="/login">
+              <Header> </Header>
               <Login></Login>
+              <Footer></Footer>
             </Route>
 
             <Route path="/signup">
+              <Header> </Header>
               <Signup></Signup>
+              <Footer></Footer>
             </Route>
 
             <Route path="/reset">
+              <Header> </Header>
               <Reset></Reset>
+              <Footer></Footer>
             </Route>
 
-            <Route path="/courses/:id">
+            <Route path="/services/:id">
+              <Header> </Header>
               <Details></Details>
+              <Footer></Footer>
             </Route>
 
             <Route path="*">
               <PageNotFound></PageNotFound>
             </Route>
           </Switch>
-          <Footer></Footer>
         </Router>
       </AuthProvider>
     </div>
